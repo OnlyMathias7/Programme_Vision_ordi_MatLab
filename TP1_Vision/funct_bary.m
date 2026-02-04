@@ -6,7 +6,7 @@ function [baryx,baryX] = funct_bary(MP2,MP3)
                     1           ]; 
     
     baryX = [   mean(MP3(1,:));  
-                mean(MP3(2,:));                       %barycentre 2D homogenes
+                mean(MP3(2,:));                       %barycentre 3D homogenes
                 mean(MP3(3,:));
                     1           ]; 
 end

@@ -1,4 +1,4 @@
-function [MP2norm,MP3dnorm] = funct_methode1(MP2,MP3)
+function [MP2norm,MP3norm] = funct_methode1(MP2,MP3)
     %Calcule du baricentre :
 
     [baryx,baryX] = funct_bary(MP2,MP3);
