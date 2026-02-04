@@ -27,11 +27,11 @@ MP3 = [ 4 3 0 0 3 5 ;
 %Vérification des matrice U et T : 
 MP2verif = T\MP2norm;
 MP3verif = U\MP3norm;
-% %Visualisation des points dans l'espace
-% vectMP = {MP2,MP3};
-% vectnorm = {MP2norm, MP3norm};
-% % funct_affichage(vectMP);
-% % funct_affichage(vectnorm);
+%Visualisation des points dans l'espace
+vectMP = {MP2,MP3};
+vectnorm = {MP2norm, MP3norm};
+funct_affichage(vectMP);
+funct_affichage(vectnorm);
 
 %Calcule des matrice B et C;
 [B,C,D] = funct_B_C_D(MP2norm, MP3norm);
@@ -53,17 +53,4 @@ Pnorm = [v1(1) v1(2) v1(3) v1(4);
          v2(1) v2(2) v2(3) v1(9)];
 
 %Dénormaliser la solution :
-
-
-%verifMP2norm = funct_conv_homotodim(MP2verifnorm);
-
-P = T\Pnorm*U;
-MP2v = P*MP3;
-dimMP2v = funct_conv_homotodim(MP2v);
-% 
-% MPC2D = funct_conv_dim(MP2verif);
-% 
-MP2verif2 = Pnorm*MP3norm;
-MP2verif2
-cartMP2verif2 = funct_conv_homotodim(MP2verif2)
-MP2norm
+funct_verification(Pnorm,T, U, MP2, MP3);
