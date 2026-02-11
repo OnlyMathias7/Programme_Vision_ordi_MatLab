@@ -1,5 +1,7 @@
 function MP2 = select_calibration_points(image_path, n_points)
-    
+    % Cette fonction permet de sélectionner manuellement les points dans l'image.
+    % Attention : les coordonnées 3D correspondantes doivent être définies 
+    % séparément dans le code ou obtenues via une autre fonction.
     
     % Charger l'image
     img = imread(image_path);
