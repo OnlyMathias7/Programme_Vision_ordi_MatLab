@@ -59,12 +59,12 @@ funct_verification(Pnorm,T, U, MP2, MP3);
 % end
 
 % Verifie avec toutes les données
-% n = length(data_cell);
-% test2 = [];
-% test3 = [];
-% 
-% for i = 1:n
-%     test2 = [test2, data_cell{i}{1}];
-%     test3 = [test3, data_cell{i}{2}];
-% end
+n = length(data_cell);
+test2 = [];
+test3 = [];
+
+for i = 1:n
+    test2 = [test2, data_cell{i}{1}];
+    test3 = [test3, data_cell{i}{2}];
+end
 funct_verification(Pnorm, T, U, test2, test3);
