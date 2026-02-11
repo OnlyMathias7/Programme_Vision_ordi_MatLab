@@ -1,51 +1,34 @@
 clc, clear, close all,
 
-% coordonné en image homogenes (2D)
-% MP2 = [ 278 150 224 351 456 525 ;
-%          116 182 381 439 172 300 ;                 %matrice de points en 2D
-%           1   1   1   1   1   1   ];
+if isfile('points_2D.mat')
+    disp('Le fichier existe');
+    S = load("points_2D.mat", 'MP2'); 
+    MP2 = S.MP2;
+else
+    disp('Le fichier n''existe pas');
+    MP2 = select_calibration_points('mire_px.png', 12);
+end
 
-MP2 = [ 460.4579 428.1211 37.0474 153.2579 259.3632 186.6053 ;
+MP2test = [ 460.4579 428.1211 37.0474 153.2579 259.3632 186.6053 ;
         226.3526 119.2368 98.0158 182.9000 349.6368 418.3526 ;                 %matrice de points en 2D
           1   1   1   1   1   1   ];
 
-MP2new = [ 459 240 329 424 89 227;
-           255 168 356  68 93 384;
-           1    1   1   1   1   1 
-    ];
-
-MP2new2 = [ 264 150 273 312 459 525;
-            231 280 333 368 223 300;
-             1    1   1   1   1   1 
-    ];
-% coordonné en espace homogenes (3D)
-% MP3 = [ 0 0 4 7 6 4 ;
-%          2 5 5 4 0 0 ; 
-%          4 3 0 0 1 3 ;
-%          1 1 1 1 1 1 ];                            %matrice de points en 3D
-
-
-
-MP3 = [ 4 3 0 0 3 5 ;
+MP3test = [ 4 3 0 0 3 5 ;
         0 0 7 5 4 6 ; 
         2 4 5 3 0 0 ;
         1 1 1 1 1 1 ];  
 
-MP3new = [ 4 0 3 2 0 6;
-           0 3 4 0 5 4;
-           2 3 0 5 6 0;
-           1 1 1 1 1 1 ]; 
+MP3 = [ 0 0 0 0 3 5 7 2 1 5 3 7;
+        7 4 6 1 6 8 3 1 0 0 0 0; 
+        6 4 2 1 0 0 0 0 5 4 1 2;
+        1 1 1 1 1 1 1 1 1 1 1 1];  
 
-MP3new2 = [ 0  0 3   5   4 6;
-           2.5 5 4.5 3.5 0 0;
-           1.5 3 0   0   2 1
-           1   1 1   1   1 1 ]; 
+% MP2 = MP2(:, [1:6, 8:end]);
+% MP3 = MP3(:, [1:6, 8:end]);
 
-%MP2 = [MP2new2];
-%MP3 = [MP3new2];
 
 %Méthode de normalisation 2
-[MP2norm,MP3norm, T, U] = funct_methode2(MP2,MP3);
+[MP2norm,MP3norm, T, U] = funct_methode2(MP2test,MP3test);
 
 
 
@@ -79,5 +62,4 @@ Pnorm = [v1(1) v1(2) v1(3) v1(4);
 
 %Dénormaliser la solution :
 funct_verification(Pnorm,T, U, MP2, MP3);
-
-%funct_verification(Pnorm, T, U, MP21, MP31);
+funct_verification(Pnorm, T, U, MP2test, MP3test);
