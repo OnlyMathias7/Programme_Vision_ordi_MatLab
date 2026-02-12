@@ -1,6 +1,5 @@
 clc, clear, close all,
 
-
 % Image à utiliser 
 img = double(imread('photophore.tif'));
 n = size(img);
