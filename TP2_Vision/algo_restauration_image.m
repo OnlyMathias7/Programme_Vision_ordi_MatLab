@@ -1,4 +1,4 @@
-function [x] = algo_iter_Gauss_Seidel(img_bruit,alpha,nb_iter)
+function [x] = algo_restauration_image(img_bruit,alpha,nb_iter)
     
     x=img_bruit;
     [h,l] = size(img_bruit);
